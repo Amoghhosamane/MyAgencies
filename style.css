@@ -1928,152 +1928,205 @@ body.light-mode .service-card:hover {
         }
     }
 
-     .download-section * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    .download-section {
-        background-color: #1a1a1a; /* Dark background, consistent with footer */
-        color: #f0f0f0; /* Light text color */
-        padding: 80px 20px;
-        text-align: center;
-        font-family: Arial, sans-serif; /* Consistent font */
-        width: 100%;
-        overflow: hidden; /* Important for animations that slide elements in */
-    }
-
-    .download-section h4 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        color: #ffffff;
-        opacity: 0; /* Initial state for animation */
-        transform: translateY(20px); /* Initial state for animation */
-        animation: fadeInSlideUp 1s ease-out forwards;
-        animation-delay: 0.2s; /* Stagger animation */
-    }
-
-    .download-section p {
-        font-size: 1.1em;
-        line-height: 1.6;
-        max-width: 700px;
-        margin: 0 auto 30px auto;
-        color: #cccccc;
-        opacity: 0; /* Initial state for animation */
-        transform: translateY(20px); /* Initial state for animation */
-        animation: fadeInSlideUp 1s ease-out forwards;
-        animation-delay: 0.4s; /* Stagger animation */
-    }
-
-    .download-button {
-        display: inline-block;
-        background-color: #1fee26; /* Primary accent color */
-        color: #ffffff;
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: 8px;
-        font-size: 1.2em;
-        font-weight: bold;
-        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        opacity: 0; /* Initial state for animation */
-        transform: scale(0.9); /* Initial state for animation */
-        animation: fadeInScale 1s ease-out forwards;
-        animation-delay: 0.6s; /* Stagger animation */
-    }
-
-    .download-button:hover {
-        background-color: #45a049; /* Slightly darker on hover */
-        transform: translateY(-3px) scale(1.02); /* Lift and slightly enlarge */
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .secondary-download-text {
-        margin-top: 30px;
-        font-size: 0.95em;
-        color: #b0b0b0;
-        opacity: 0; /* Initial state for animation */
-        animation: fadeIn 1s ease-out forwards;
-        animation-delay: 0.8s; /* Stagger animation */
-    }
-
-    .inline-download-link {
-        color: #66b3ff; /* A different accent color for inline link */
-        text-decoration: underline;
-        transition: color 0.3s ease;
-    }
-
-    .inline-download-link:hover {
-        color: #99ccff;
-    }
-
-    /* Keyframe Animations */
-    @keyframes fadeInSlideUp {
-        from {
+.download-section * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .download-section {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            padding: 80px 20px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            width: 100%;
+            overflow: hidden;
+        }
+        .download-section h4 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #ffffff;
             opacity: 0;
             transform: translateY(20px);
+            animation: fadeInSlideUp 1s ease-out forwards;
+            animation-delay: 0.2s;
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+        .download-section p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            color: #cccccc;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s ease-out forwards;
+            animation-delay: 0.4s;
         }
-    }
-
-    @keyframes fadeInScale {
-        from {
+        
+        /* ----- Corrected Animated Button CSS ----- */
+        .btn-4 {
+            scale: 0.5;
+            --width: 300px;
+            --height: 100px;
+            --tooltip-height: 40px;
+            --tooltip-width: 110px;
+            --gap-between-tooltip-to-button: 18px;
+            --button-color: #11e93f;
+            --tooltip-color: #fff;
+            width: var(--width);
+            height: var(--height);
+            background: var(--button-color);
+            position: relative;
+            text-align: center;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 35px;
+            cursor: pointer;
+            transition: background 0.3s;
+            /* Initial animations for the button container */
             opacity: 0;
             transform: scale(0.9);
+            animation: fadeInScale 1s ease-out forwards;
+            animation-delay: 0.6s;
+            margin: auto;
         }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
+        .btn-4::before {
+            position: absolute;
+            content: attr(data-tooltip);
+            width: var(--tooltip-width);
+            height: var(--tooltip-height);
+            background-color: var(--tooltip-color);
+            font-size: 16px;
+            color: #0ac636;
+            border-radius: 6px;
+            line-height: var(--tooltip-height);
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+            left: calc(50% - var(--tooltip-width) / 2);
             opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s;
         }
-        to {
+        .btn-4::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: var(--tooltip-color) transparent transparent transparent;
+            border-width: 12px 12px 0 12px;
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+            left: calc(50% - 12px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s;
+        }
+        .btn-4 .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-4 .button-wrapper,
+        .btn-4 .text,
+        .btn-4 .icon {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            color: #fff;
+        }
+        .btn-4 .text {
+            top: 0;
+            transition: top 0.5s;
+        }
+        .btn-4 .icon {
+            color: #fff;
+            top: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: top 0.5s;
+        }
+        .btn-4 .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        .btn-4:hover {
+            background: #02f860;
+        }
+        .btn-4:hover .text {
+            top: -100%;
+        }
+        .btn-4:hover .icon {
+            top: 0;
+        }
+        .btn-4:hover::before,
+        .btn-4:hover::after {
             opacity: 1;
+            visibility: visible;
         }
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .download-section {
-            padding: 60px 15px;
+        .btn-4:hover::after {
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
         }
-        .download-section h4 {
-            font-size: 2em;
+        .btn-4:hover::before {
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
         }
-        .download-section p {
-            font-size: 1em;
-            margin-bottom: 20px;
+        
+        /* Keyframe Animations for the section content */
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .download-button {
-            padding: 12px 25px;
-            font-size: 1.1em;
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
-        .secondary-download-text {
-            margin-top: 20px;
-            font-size: 0.9em;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
-    }
-
-    @media (max-width: 480px) {
-        .download-section {
-            padding: 40px 10px;
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .download-section {
+                padding: 60px 15px;
+            }
+            .download-section h4 {
+                font-size: 2em;
+            }
+            .download-section p {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+            .btn-4 {
+                padding: 12px 25px;
+                font-size: 1.1em;
+            }
         }
-        .download-section h4 {
-            font-size: 1.8em;
+        @media (max-width: 480px) {
+            .download-section {
+                padding: 40px 10px;
+            }
+            .download-section h4 {
+                font-size: 1.8em;
+            }
+            .download-section p {
+                font-size: 0.9em;
+            }
         }
-        .download-section p {
-            font-size: 0.9em;
-        }
-        .download-button {
-            padding: 10px 20px;
-            font-size: 1em;
-        }
-    }
