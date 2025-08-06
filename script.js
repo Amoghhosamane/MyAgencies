@@ -438,4 +438,26 @@ next.addEventListener('click', function(){
 prev.addEventListener('click', function(){
     let items = document.querySelectorAll('.item')
     document.querySelector('.slide').prepend(items[items.length - 1]) // here the length of items = 6
+
 })
+
+function downloadServiceCatalog() {
+    // The path to your PDF file
+    const pdfPath = 'assets/AILiance_Agencies_Service_Catalog.pdf';
+    
+    // The filename for the user to download
+    const filename = 'AILiance_Agencies_Service_Catalog.pdf';
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = pdfPath;
+    link.download = filename;
+
+    // Append the link to the body, trigger the click, and then remove it
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+// Attach the function to a button click event
+document.querySelector('.download-button').addEventListener('click', downloadServiceCatalog);
