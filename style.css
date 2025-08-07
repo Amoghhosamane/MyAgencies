@@ -387,6 +387,7 @@ body.light-mode .dropdown-content a {
         .btn-2:after {
             content: "";
             background: #39ff14;
+;
             position: absolute;
             z-index: -1;
             left: -20%;
@@ -2126,4 +2127,3 @@ body.light-mode .service-card:hover {
                 font-size: 0.9em;
             }
         }
-
