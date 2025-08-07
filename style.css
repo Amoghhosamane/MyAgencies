@@ -2127,3 +2127,24 @@ body.light-mode .service-card:hover {
                 font-size: 0.9em;
             }
         }
+
+      @media (max-width:768px) {
+  /* Styles for mobile screens */
+  body {
+    font-size:16px;
+    padding:10px;
+  }
+  .container {
+    padding:0;
+    width:100%;
+  }
+  nav {
+    display:block;
+    /* Convert menu to mobile-friendly hamburger or collapsible */
+  }
+}
+
+.container {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+}
