@@ -386,7 +386,7 @@ body.light-mode .dropdown-content a {
         /* The skewed fill animation using the green color */
         .btn-2:after {
             content: "";
-            background: #10ea04e2;
+            background: #39ff14;
             position: absolute;
             z-index: -1;
             left: -20%;
@@ -2126,3 +2126,4 @@ body.light-mode .service-card:hover {
                 font-size: 0.9em;
             }
         }
+
